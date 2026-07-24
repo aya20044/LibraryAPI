@@ -1,5 +1,6 @@
 
 using LibraryAPI.Data;
+using LibraryAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryAPI
@@ -16,6 +17,8 @@ namespace LibraryAPI
                     builder.Configuration.GetConnectionString("DefaultConnection")
                     )
                 );
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+            builder.Services.AddScoped<IAuthorService, AuthorService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

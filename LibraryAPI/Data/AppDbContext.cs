@@ -10,6 +10,16 @@ namespace LibraryAPI.Data
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Book>()
+                .HasOne(book => book.Author)
+                .WithMany(author => author.Books)
+                .HasForeignKey(book => book.AuthorId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }

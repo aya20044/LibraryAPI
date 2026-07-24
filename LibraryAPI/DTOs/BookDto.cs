@@ -1,24 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LibraryAPI.Models
+namespace LibraryAPI.DTOs
 {
-    public class Book : IEntity
+    public class BookDto
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         [Required]
         [MaxLength(100)]
         public string Title { get; set; } = string.Empty;
-        [MaxLength(1000)]
         public string? Description { get; set; }
         [Required]
         public string Language { get; set; } = string.Empty;
-        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public DateOnly PublishedDate { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Author is required.")]
         public int AuthorId { get; set; }
-        public Author Author { get; set; } = default!;
+
+        [Range(1, int.MaxValue, ErrorMessage = "Category is required.")]
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = default!;
     }
 }

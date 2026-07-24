@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LibraryAPI.Models
+namespace LibraryAPI.DTOs
 {
-    public class Author : IEntity
+    public class AuthorDto
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; } = string.Empty;
-        public ICollection<Book> Books { get; set; } = [];
+        public ICollection<BookDto> Books { get; set; } = [];
     }
 }
