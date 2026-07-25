@@ -32,8 +32,6 @@ It provides CRUD operations and supports searching, sorting, and paginating book
 
 ## What I Learned
 
-## What I Learned
-
 Through this project, I learned how to:
 
 - Build a RESTful Web API using ASP.NET Core.
