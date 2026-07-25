@@ -1,7 +1,9 @@
 
 using LibraryAPI.Data;
+using LibraryAPI.Models;
 using LibraryAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace LibraryAPI
 {
@@ -19,7 +21,11 @@ namespace LibraryAPI
                 );
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
             builder.Services.AddScoped<IAuthorService, AuthorService>();
-
+            builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped(
+                    typeof(IGenericService<,>),
+                    typeof(GenericService<,>));
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

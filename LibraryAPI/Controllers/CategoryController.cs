@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
+﻿using LibraryAPI.DTOs;
+using LibraryAPI.Models;
+using LibraryAPI.Services;
+using Microsoft.AspNetCore.Mvc;
 namespace LibraryAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryController : GenericController<Category,CategoryDto>
     {
-        public CategoryController()
+        public CategoryController(ICategoryService categoryService)
+            : base(categoryService)
         {
 
         }
+
     }
 }

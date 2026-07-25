@@ -3,7 +3,7 @@ using LibraryAPI.Models;
 
 namespace LibraryAPI.Services
 {
-    public interface IAuthorService : IGenericService<Author,AuthorDto>
+    public interface ICategoryService : IGenericService<Category,CategoryDto>
     {
     }
 }

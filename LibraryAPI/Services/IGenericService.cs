@@ -9,7 +9,7 @@ namespace LibraryAPI.Services
 
         Task<TDto?> GetById(int id);
 
-        Task<TDto> Add(TDto dto);
+        Task<TDto?> Add(TDto dto);
 
         Task<TDto?> Edit(int id, TDto dto);
 

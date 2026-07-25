@@ -29,10 +29,22 @@ namespace LibraryAPI.Services
                 return null;
             return Mapper.Map<AuthorDto>(author);
         }
-        public async Task<bool> HasBooks(int authorId)
+        public override async Task<bool> Delete(int id)
         {
-            return await Context.Books
-                         .AnyAsync(book => book.AuthorId == authorId);
+            var hasBooks =  await Context.Books
+                         .AnyAsync(book => book.AuthorId == id);
+            if (hasBooks)
+                return false;
+
+            var author = await Entities.FindAsync(id);
+
+            if (author == null)
+                return false;
+
+            Entities.Remove(author);
+            await Context.SaveChangesAsync();
+            return true;
+
         }
 
     }

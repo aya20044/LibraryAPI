@@ -43,7 +43,7 @@ namespace LibraryAPI.Services
             return Mapper.Map<TDto>(entity);
         }
 
-        public virtual async Task<TDto> Add(TDto dto)
+        public virtual async Task<TDto?> Add(TDto dto)
         {
             var entity = Mapper.Map<TEntity>(dto);
 
